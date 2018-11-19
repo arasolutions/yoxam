@@ -1,0 +1,28 @@
+<ion-side-menus enable-menu-with-back-views="false">
+    <ion-side-menu-content drag-content="false">
+        <ion-nav-view name="menuContent"></ion-nav-view>
+    </ion-side-menu-content>
+    <ion-side-menu side="left" is-enabled="true" width="100" scrollbar-y="false">
+        <ion-content class="dark-bg txtcenter light">
+            <img class="logoImg" ng-src="{{mediaPath+data.site_img}}">
+            <div ng-click="data.grayOn?'':ipModal.show()">
+                <img id="photo" class="userImg animated fadeIn" ng-src="{{mediaPath+data.photo}}" ng-class="{grayFilter:data.grayOn}">
+                <p class="fs11">{{data.nom}}</p>
+            </div>
+            <hr>
+            <div class="pb25 animated bounceInLeft" ng-repeat="uni in data.univers">
+                <!-- class="animated bounceInRight" -->
+                <a menu-close ng-click="clickUnivers(uni, $index)"><img height="64" width="64" ng-src="{{mediaPath+uni.uni_logo}}" ng-class="{grayFilter:(data.activeIdxU!==$index&&data.grayOn||uni.finished)}">
+                </a>
+                <div class="fs11">{{uni.uni_nom}}</div>
+            </div>
+        </ion-content>
+        <ion-footer-bar class="bar-dark">
+            <!-- class="animated bounceInUp" -->
+            <div class="txtcenter w100 pt5 animated bounceInUp">
+                <a menu-close ng-click="showConfirmLogout()"><img height="64" width="64" src="img/logoff.png" ng-class="{grayFilter:data.grayOn}"></a>
+                <div class="fs11">Déconnexion</div>
+            </div>
+        </ion-footer-bar>
+    </ion-side-menu>
+</ion-side-menus>

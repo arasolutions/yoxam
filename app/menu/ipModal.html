@@ -1,0 +1,69 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-positive">
+        <h1 class="title">Informations personnelles</h1>
+        <div class="buttons">
+            <!-- <a class="button button-icon icon ion-close-round" ng-click="closeModal()"></a> -->
+        </div>
+    </ion-header-bar>
+    <ion-content>
+        <div class="vamiddle" href="#">
+            <div style="height:100px;width:100px;text-align:center" class="royal-bg light" ng-click="takePicture()">
+                <div style="margin-top:8px" ng-if="data.photo==='media/candidats/default.png'">
+                    <i style="font-size:40px;" class="icon ion-camera"></i>
+                    <br>Prenez votre selfie!
+                </div>
+                <div ng-if="data.photo!=='media/candidats/default.png'">
+                    <img ng-src="{{mediaPath+data.photo}}" width="100%">
+                </div>
+            </div>
+            <div style="width:510px">Vous disposez d'un droit d'accès, de rectification et d'opposition aux données vous concernant que vous pouvez exercer en contactant le correspondant informatique et libertés de la CNIL.
+                <!-- <button class="button icon-left ion-camera button-positive" style="float: right;margin: 10px">Prenez votre selfie</button> -->
+            </div>
+        </div>
+        <span class="item vamiddle" href="#" style="padding:0px 16px">
+    <div style="width:372px">Sexe</div>
+    <div>
+      <label class="checkbox checkbox-positive">
+        <input ng-model="data.checkHomme.checked" ng-click="checkSexe(true)" type="checkbox" style="display:inline-block">
+      </label>
+    </div>
+    <div>Homme</div>
+    <div>
+      <label class="checkbox checkbox-positive">
+        <input ng-model="data.checkFemme.checked" ng-click="checkSexe(false)" type="checkbox" style="display:inline-block">
+      </label>
+    </div>
+    <div>Femme</div>
+</span>
+        <a class="item dark vamiddle" href="#" style="padding:8px 16px">
+            <div style="width:488px">Age</div>
+            <div style="font-size:32px">
+                <i class="icon ion-minus-circled positive" ng-click="setAgePlus(false)"></i>
+            </div>
+            <div style="padding:0px 5px">
+                {{user.can_age}}</div>
+            <div style="font-size:32px"><i class="icon ion-plus-circled positive" ng-click="setAgePlus(true)"></i>
+            </div>
+        </a>
+        <label class="item item-input item-select">
+            <div class="input-label">
+                Situation actuelle
+            </div>
+            <select ng-change="removeFirst(data.listeSituation)" ng-model="data.selectedSituation" ng-options="situation.libelle for situation in data.listeSituation track by situation.id">
+            </select>
+        </label>
+        <label class="item item-input item-select">
+            <div class="input-label">
+                Dernière classe fréquentée
+            </div>
+            <select ng-change="removeFirst(data.listeClasse)" ng-model="data.selectedClasse" ng-options="classe.libelle for classe in data.listeClasse track by classe.id"></select>
+        </label>
+        <label class="item item-input item-select">
+            <div class="input-label">
+                Type de formation
+            </div>
+            <select ng-change="removeFirst(data.listeFormation)" ng-model="data.selectedFormation" ng-options="formation.libelle for formation in data.listeFormation track by formation.id"></select>
+        </label>
+        <button class="button icon-left ion-checkmark-round button-positive" style="float: right;margin: 10px" ng-click="ipValidation()">Valider</button>
+    </ion-content>
+</ion-modal-view>

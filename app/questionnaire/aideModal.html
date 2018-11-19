@@ -1,0 +1,11 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-positive">
+        <h1 class="title">Aide</h1>
+        <div class="buttons">
+            <a class="button button-icon icon ion-close-round" ng-click="aideModal.hide()"></a>
+        </div>
+    </ion-header-bar>
+    <ion-content class="padding">
+    	<span ng-bind-html="data.aideTxt"></span>
+    </ion-content>
+</ion-modal-view>

@@ -1,0 +1,16 @@
+<ion-view>
+    <ion-content style="background-color:#999;padding-top:20px">
+        <div class="row txtcenter" ng-repeat="i in myrange(data.questionnaires)" style="height:374px">
+            <div class="col colQtr royal-bg" ng-class="{'dark-bg':qtr.finished}" ng-repeat="qtr in data.questionnaires.slice(i,i+3) track by $index" ng-click="clickQtr(qtr, $index+i)">
+                <div class="divh2">{{qtr.qtr_nom}}</div>
+                <div class="img-wrapper">
+                    <img ng-src="{{mediaPath+qtr.qtr_img}}" ng-class="{'grayFilter':qtr.finished}">
+                </div>
+                <p class="detail">{{qtr.qtr_description}}</p>
+                <a ng-if="!qtr.finished" style="text-decoration:none !important;margin:0px 5px 0px 5px;border-radius: 50% !important;float:right; right:10px; bottom:30px" menu-close class="button button-balanced animated pulse infinite"><i class="icon ion-play"></i></a>
+                <a ng-if="qtr.finished" style="text-decoration:none !important;margin:0px 5px 0px 5px;border-radius: 50% !important;float:right; right:10px; bottom:30px" menu-close class="button button-royal"><i class="icon ion-checkmark-round"></i></a>
+            </div>
+        </div>
+        </div>
+    </ion-content>
+</ion-view>

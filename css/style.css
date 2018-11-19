@@ -1,0 +1,326 @@
+/* GENERAL */
+
+.txtcenter {
+    text-align: center;
+}
+.txtleft {
+    text-align: left;
+}
+.txtright {
+    text-align: right;
+}
+p {
+    margin: 0;
+}
+
+.pb25{
+	padding-bottom: 25px;
+}
+
+.pt10{
+	padding-top: 10px;
+}
+
+.pl5{
+    padding-left: 5px;
+}
+
+.pl30{
+    padding-left: 30px;
+}
+
+.w100{
+	width: 100px;
+}
+
+.pt5{
+    padding-top: 5px;
+}
+.pr5{
+    padding-right: 5px;
+}
+.pb5{padding-bottom: 5px;}
+
+/*Surcharge Ionic*/
+
+.popup-container .popup {
+    width: 450px;
+    font-size:106%;
+}
+
+.backd {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 11;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(202, 194, 219, 1);
+    visibility: visible;
+    opacity:0;
+}
+
+.backdrop.active {
+    opacity: 1;
+}
+
+/* LOGIN.HTML */
+
+.bodyLogin {
+    position: absolute;
+    width: 1024px;
+    height: 768px;
+    background-image: url(../img/fond/fond_login.jpg);
+    background-size: cover;
+    /*-webkit-filter: blur(5px);*/
+    z-index: -100;
+}
+
+.grad {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -40px;
+    bottom: -40px;
+    width: auto;
+    height: auto;
+    /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.65)));
+    /* Chrome,Safari4+ */
+    z-index: -1;
+    opacity: 0.7;
+}
+
+.headerLogin {
+    position: absolute;
+    /*top: calc(50% - 70px);
+    left: calc(50% - 255px);*/
+    top:215px;
+    left:257px;
+    z-index: 2;
+}
+
+.login {
+    position: absolute;
+    /*top: calc(50% - 75px);
+    left: calc(50% - 50px);*/
+    top:210px;
+    left:462px;
+    height: 150px;
+    width: 271px;
+    padding: 10px;
+    z-index: 2;
+}
+
+.logoLogin{
+    position: absolute;
+    top:400px;
+    left:432px;
+}
+
+.login input[type=text] {
+    width: 250px;
+    height: 30px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 2px;
+    color: #fff;
+    font-family: 'Exo', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 4px;
+}
+
+.login input[type=password] {
+    width: 250px;
+    height: 30px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 2px;
+    color: #fff;
+    font-family: 'Exo', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 4px;
+    margin-top: 10px;
+}
+
+.login input[type=text]:focus {
+    outline: none;
+    border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+.login input[type=password]:focus {
+    outline: none;
+    border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+.version {
+    position: absolute;
+    top: 706px;
+    right: 10px;
+}
+
+/* MENU.HTML */ 
+
+/*Surcharge Ionic*/
+
+.menu-content {
+    left: 100px !important;
+    width: calc(100% - 100px) !important;
+}
+
+.has-footer {
+    bottom: 100px;
+}
+
+.bar-footer {
+    height: 100px;
+}
+
+/*Fin surcharge Ionic*/
+
+#photo {
+    -webkit-animation-duration: 2s;
+    -webkit-animation-delay: 1s;
+}
+
+.bg-menu {
+    background-color: #555;
+}
+
+.logoImg {
+    width: 100%;
+    padding: 20px 10px;
+}
+
+.userImg {
+    height: 64px;
+    border-radius: 50%;
+    border: 3px solid #EEE;
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+}
+
+.fs11 {
+    font-size: 11px;
+    line-height: 11px;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+.grayFilter { 
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+/*TUTO.HTML*/
+.tutoPage {
+    width: 1024px;
+    height: 700px;
+    display: table-cell;
+    vertical-align: bottom;
+    opacity: 0.85;
+}
+
+/*HOME.HTML + IPMODAL.HTML*/
+.myrow{
+    min-height: 500px;
+}
+
+.vamiddle div {
+  vertical-align:middle;
+  display: inline-block;
+}
+
+/*Surcharge Ionic*/
+.row + .row {
+    padding-top: 40px;
+}
+/*Fin surcharge Ionic*/
+
+/*UNIVERS.HTML*/
+.divh2 {
+    padding: 10px 0px;
+    margin: 0px;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.img-wrapper img {
+    width: 100%;
+    height: 200px;
+    margin: 0;
+    display: block;
+    position: relative;
+}
+
+.detail {
+    color: #777;
+    background-color: #ddd;
+    height:82px;
+    padding: 20px;
+    line-height: 1.5;
+    font-family: 'Roboto', sans-serif;
+}
+
+.colQtr{
+  padding:0px;
+  margin:0px 3px;
+  box-shadow: 3px 3px 5px #656565;
+  max-width: 298px;
+  min-height: 364px;
+}
+/*QUESTIONNAIRE.HTML*/
+.questionPage{
+    width: 924px;
+    height: 720px;
+    display: table-cell;
+    vertical-align: bottom;
+    opacity: 0.85;
+}
+
+.pageSelected{
+    border:3px solid #C6107E !important;
+}
+
+.progress-wrapper{
+    width:100px;
+    /*height:100px; version cercle */
+    height:61px;
+    position: fixed;
+    right:10px;
+    bottom :0px;
+    /*margin:20px auto; version cercle */
+    font-size: 21px;
+}
+.progress{
+    position: absolute;
+    width: 100%;
+    /* bottom:40px; version cercle */
+    bottom:14px; 
+    font-size:22px;
+    text-align: center;
+}
+
+.ckbox{
+    width:100%;
+    display:inline-block;
+}
+.ckbox > span{
+    margin:0px 5px 0px 5px;
+}
+
+/*Surcharge Ionic*/
+.button{
+    min-width: 48px;
+}
+.button-small {
+    font-size: 16px;
+    min-width:80px;
+    margin: 0px 5px 0px 5px;
+}
+/*Fin surcharge Ionic*/

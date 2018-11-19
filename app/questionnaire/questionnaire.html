@@ -1,0 +1,67 @@
+<ion-view>
+    <ion-content style="background-color:#999" scroll="false" ng-class="{backd:isLoading}">
+        <ion-slides options="swiperOptions" slider="slider">
+            <ion-slide-page ng-repeat="slide in data.slides" style="background-image:url({{mediaPath+slide.sld_bgimg}});background-size: 1024px 768px;background-position:-50px">
+                <div class="questionPage">
+                    <div ng-repeat="bloc in slide.blocs">
+                        <div class="card txtcenter" ng-if='bloc.blo_consigne'>
+                            <div class="item item-text-wrap light dark-bg"><b>{{bloc.blo_consigne}}</b></div>
+                        </div>
+                        <div class="card txtcenter">
+                            <div class="item item-text-wrap" ng-repeat="question in bloc.questions">
+                                <div ng-if="bloc.questions[0].q_type===4">
+                                    <h2 class="dark pb5" ng-bind-html="question.q_txt"></h2>
+                                    <button ng-repeat="reponse in question.reponses" class="button button-small button-positive" ng-class="{'button-outline':reponse.r_id!==question.r_id}" ng-click="selectReponse(slide,question, reponse, true)">
+                                        {{reponse.r_txt}}
+                                    </button>
+                                </div>
+                                <div ng-if="bloc.questions[0].q_type===3" ng-class="{'txtleft':question.q_txt}">
+                                    <button ng-if="question.q_txt" class="button button-small button-royal" style="min-width:120px;margin-right:20px">
+                                        {{question.q_txt}}
+                                    </button>
+                                    <button ng-repeat="reponse in question.reponses" class="button button-small button-positive" ng-class="{'button-outline':reponse.r_id!==question.r_id}" ng-click="selectReponse(slide,question, reponse, false)">
+                                        {{reponse.r_txt}}
+                                    </button>
+                                </div>
+                                <div ng-if="bloc.questions[0].q_type===1 || bloc.questions[0].q_type===5">
+                                    <h2 class="dark pb5" style="font-weight: bold" ng-if="question.q_txt" ng-bind-html="question.q_txt"></h2>
+                                    <!-- <ion-checkbox ng-repeat="reponse in question.reponses" ng-model="reponse.checked" ng-change="checkReponse(slide, question, reponse)" class="txtleft">
+                                        <span ng-bind-html="reponse.r_txt"></span>
+                                    </ion-checkbox> -->
+                                    <a class="item item-icon-left txtleft" ng-repeat="reponse in question.reponses" ng-click="checkReponse(slide, question, reponse, true)" ng-model="reponse.checked">
+                                        <i class="icon positive" ng-class="reponse.checked?'ion-ios-checkmark':'ion-ios-circle-outline'"></i>
+                                        <span ng-bind-html="reponse.r_txt"></span>
+                                    </a>
+                                </div>
+                                <div ng-if="bloc.questions[0].q_type===2 || bloc.questions[0].q_type===6">
+                                    <img ng-src="{{mediaPath+question.q_img}}">
+                                    <div class="ckbox">
+                                        <span ng-repeat="reponse in question.reponses">
+                                        <label class="checkbox checkbox-positive">
+                                            <input type="checkbox" ng-model="reponse.checked" ng-change="checkReponse(slide, question, reponse, false)">{{$index+1}}
+                                        </label>
+                                    </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ion-slide-page>
+        </ion-slides>
+        <div style="position: absolute;bottom: 10px;z-index:12;text-align:left">
+            <a ng-if="data.afficheExit" style="text-decoration:none !important;margin:0px 5px 0px 5px;border-radius: 50% !important;" class="button button-assertive animated pulse infinite" ng-click="askQuit()"><i class="ion-close-round"></i></a>
+            <a ng-if="data.afficheAide" style="text-decoration:none !important;margin:0px 5px 0px 5px;border-radius: 50% !important;" class="button button-positive" ng-click="openAide()"><i class="icon ion-help"></i></a>
+            <a ng-if="data.docu" style="text-decoration:none !important;margin:0px 5px 0px 5px;border-radius: 50% !important;" class="button button-royal" ng-click="openDocu()"><i class="icon ion-document-text"></i></a>
+        </div>
+        <div style="width:100%;position: absolute;bottom: 10px;z-index:10;text-align:center">
+            <a style="text-decoration:none !important;margin:0px 5px 0px 5px;border-radius: 50% !important;color:blue" ng-repeat="slide in data.slides" class="button" ng-click="slider.slideTo($index,0,false);setCurrentSlide($index,false)" ng-class="[{1: 'button-stable',2: 'button-energized',3: 'button-balanced'}[slide.sld_etat],{'pageSelected':myActiveIndex==$index}]"><b>{{::$index+1}}</b></a>
+        </div>
+        <div class="progress-wrapper" style="z-index:11">
+            <div class="progress light">
+                {{timer_display}}
+            </div>
+            <div round-progress max="data.timeMax" current="timer" color="{{ (timer / data.timeMax < 0.2) ? '#C6107E' : '#80B42B' }}" bgcolor="#999" radius="100" stroke="20" semi="true" rounded="true" clockwise="true" responsive="true" duration="800" animation="easeInOutQuart" animation-delay="0"></div>
+        </div>
+    </ion-content>
+</ion-view>

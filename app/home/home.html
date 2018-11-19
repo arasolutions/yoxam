@@ -1,0 +1,11 @@
+<ion-view>
+    <ion-content style="background-color:#999;padding-top:138px">
+        <div class="row txtcenter myrow" ng-repeat="i in myrange(univers)">
+            <div class="col" ng-repeat="uni in univers.slice(i,i+3) track by $index">
+                <a ng-if="uni.uni_logo" menu-close ng-click="clickUnivers(uni, $index)"><img height="128" width="128" ng-src="{{mediaPath+uni.uni_logo}}" ng-class="{grayFilter:uni.finished}"></a>
+                <div style="font-size:30px;margin-top:10px;line-height:28px">{{uni.uni_nom}}</div>
+                <div style="padding:16px">{{uni.uni_description}}</div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

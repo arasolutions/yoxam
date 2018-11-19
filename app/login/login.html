@@ -1,0 +1,21 @@
+<ion-view>
+    <ion-content scroll="false" has-bouncing="false">
+        <div class="bodyLogin"></div>
+        <!-- <div class="grad"></div> -->
+        <div class="headerLogin">
+            <img src="img/logo/logo_big-white-min.png" width="200">
+        </div>
+        <br>
+        <div class="login">
+            <input type="text" placeholder="Identifiant" name="user" ng-model="form.login">
+            <br>
+            <input type="password" placeholder="Password" name="password" ng-model="form.password">
+            <br>
+            <a style="margin:0px;height:35px" class="button button-block button-small button-positive" ng-click="login()">Login</a>
+        </div>
+        <div class="logoLogin">
+            <img src="img/logo/logo_fmp_trans.png" height="160">
+        </div>
+        <div class="version light txtright">Version : {{versionApp}}<br/>V.Univers : {{versionUni}}<br/>V.Candidats : {{versionUser}}</div>
+    </ion-content>
+</ion-view>

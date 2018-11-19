@@ -1,0 +1,67 @@
+<ion-view>
+    <div class="bar bar-header bar-positive mb10">
+        <h1 class="title">Panneau administrateur</h1>
+        <button class="button icon-left ion-power" ng-click="showConfirmLogout()"><span class="pl5">Déconnexion</span></button>
+    </div>
+    <ion-content style="background-color:#999;" scroll="true" has-bouncing="true" class="has-header pt10">
+        <button class="button button-small button-balanced" ng-click="pushInfos()">
+            Infos
+        </button>
+        <button class="button button-small button-balanced" ng-click="data.configPane=!data.configPane">
+            Config ID
+        </button>
+        <button class="button button-small button-assertive" ng-click="forceSyncCan()">
+            Forcer sync Candidats
+        </button>
+        <button class="button button-small button-assertive" ng-click="forceSyncUni()">
+            Forcer synchro Univers
+        </button>
+        <button class="button button-small button-dark" ng-click="clearLogs()">
+            Clear logs
+        </button>
+        <button class="button button-small button-assertive" ng-click="resetLS()">
+            <i class="ion-alert-circled pr5"></i>Reset LS
+        </button>
+        <button class="button button-small button-assertive" ng-click="resetTestAccount()">
+            <i class="ion-alert-circled pr5"></i>Reset Comptes Test
+        </button>
+        <button class="button button-small button-assertive" ng-click="sendEmail()">
+            <i class="ion-email pr5"></i>Help
+        </button>
+        <div class="padding">
+            <p ng-repeat="log in logs track by $index">{{log}}</p>
+        </div>
+        <div class="list" style="width:300px;margin-left: 20px" ng-if="data.configPane||false">
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    Site
+                </div>
+                <select ng-model="data.siteId">
+                    <option value="1">Midi Atlantique</option>
+                    <option value="2">Ile de France</option>
+                    <option value="3">Méditérranée</option>
+                </select>
+            </label>
+            <label class="item item-input">
+                <input type="text" placeholder="Label" ng-model="data.label">
+            </label>
+            <button class="button button-full button-positive" ng-click="setName()">
+                Envoyer config
+            </button>
+        </div>
+        <ion-list>
+            <div class="item item-divider item-dark light txtcenter">
+                Liste des examens présents sur cette tablette
+            </div>
+            <ion-item ng-repeat="examen in examens track by $index" class="item-button-right" ng-class="examen.commit?'item-stable':'item-energized'">
+                <h2>{{examen.can_id}} | {{examen.can_login}} | {{examen.can_nom}} <i ng-if="!examen.finished" class="ion-alert-circled assertive pl30"> Examen non terminé</i></h2>
+                <button ng-if="!examen.commit && !examen.can_test" class="button button-assertive" ng-click="synch(examen)">
+                    <i class="ion-paper-airplane pr5"></i> Synchroniser
+                </button>
+                <button ng-if="examen.commitDate" class="button button-dark button-clear">
+                    <i class="ion-checkmark-round pr5"></i>{{examen.commitDate}}
+                </button>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

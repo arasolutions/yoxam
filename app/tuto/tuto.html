@@ -1,0 +1,23 @@
+<ion-view>
+    <ion-content style="background-color:#999" scroll="false">
+        <ion-slides options="swiperOptions" slider="slider">
+            <ion-slide-page ng-repeat="slide in slidesTut" style="background-image:url({{mediaPath+slide.sld_bgimg}});background-size: 1024px 768px">
+                <div class="tutoPage">
+                    <div class="txtright">
+                        <a ng-if="slide.sld_audio" style="text-decoration:none !important;border-radius: 50% !important; right:10px" class="button button-positive" ng-click="toogleAudioButton()"><i class="icon" ng-class="audio.play_run?'ion-pause':'ion-headphone'"></i></a>
+                    </div>
+                    <div style="min-height:200px" class="card">
+                        <div class="item item-text-wrap" ng-bind-html="slide.sld_txt">
+                        </div>
+                    </div>
+                </div>
+            </ion-slide-page>
+        </ion-slides>
+        <div style="width:100%;position: absolute;bottom: 10px;z-index:10;text-align:center">
+            <a style="text-decoration:none !important;margin:0px 5px 0px 5px;border-radius: 50% !important;color:blue" ng-repeat="slide in slidesTut" class="button button-balanced" ng-click="slider.slideTo($index,0,false);setCurrentSlide($index,false)" ng-class="{'pageSelected':myActiveIndex==$index}"><b>{{::$index+1}}</b></a>
+        </div>
+        <div ng-if="myActiveIndex===(slidesTut.length-1)" style="position: absolute;bottom: 10px;z-index:12;right:10px">
+            <a style="text-decoration:none !important;margin:0px 5px 0px 5px;border-radius: 50% !important" ui-sref="menu.home" class="button button-positive animated pulse infinite"><i class="icon ion-play"></i></a>
+        </div>
+    </ion-content>
+</ion-view>
