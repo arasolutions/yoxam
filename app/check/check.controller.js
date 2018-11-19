@@ -28,7 +28,7 @@ angular.module('FMPQuizz.check.controller', [])
     function gotoLogin() {
         nbdl++;
         if (nbdl === 2) {
-            //$state.go('login');
+            $state.go('login');
         }
     };
 
@@ -185,7 +185,7 @@ angular.module('FMPQuizz.check.controller', [])
                         versionRemote = server.data.version || "";
                         $scope.logs.push("version R / L : " + versionRemote + ' VS ' + versionLocale + ' -> refresh : ' + (versionRemote !== versionLocale));
                         //si retour et version changée alors on remplace
-                        if (false/*versionRemote !== versionLocale*/) {
+                        if (versionRemote !== versionLocale) {
                             $scope.logs.push("Refresh de la base users");
                             usersService.replaceAllUsers(server.data.candidats.concat(server.data.administrateurs));
                             //médias des users
@@ -220,7 +220,7 @@ angular.module('FMPQuizz.check.controller', [])
                             versionRemoteUnivers = server.data.version || "";
                             $scope.logs.push("version (univers) R / L : " + versionRemoteUnivers + ' VS ' + versionLocaleUnivers + ' -> refresh : ' + (versionRemoteUnivers !== versionLocaleUnivers));
                             //si retour et version changée alors on remplace
-                            if (false/*versionRemoteUnivers !== versionLocaleUnivers*/) {
+                            if (versionRemoteUnivers !== versionLocaleUnivers) {
                                 $scope.logs.push("Refresh de la base univers + DL des médias");
                                 universService.replaceAllUnivers(server.data.univers);
                                 //médias de l'univers

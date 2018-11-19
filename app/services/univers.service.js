@@ -39,7 +39,7 @@ function universService($q, Loki, $http, FMP, localStorageService) {
     };
 
     function getUnivers(deferred) {
-        return $http.get('json/loki__lsFMP.univers.json');
+        //return $http.get('json/loki__lsFMP.univers.json');
         var uuid = FMP.UDID + (localStorageService.get("siteId") || '1');
         var url = _server + "/api/univers/udid/"+uuid+"?callback=JSON_CALLBACK";
         return $http({

@@ -40,7 +40,7 @@ function usersService(sha1, $q, Loki, $http, FMP, localStorageService) {
     };
 
     function getUsers(deferred) {
-        return $http.get('json/loki__lsFMP.users.json');
+        //return $http.get('json/loki__lsFMP.users.json');
         var uuid = FMP.UDID + (localStorageService.get("siteId") || '1');
         var url = _server + "/api/candidats/udid/"+uuid+"?callback=JSON_CALLBACK";
         return $http({
