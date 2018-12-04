@@ -7,6 +7,7 @@ angular.module('FMPQuizz.check.controller', [])
     var versionLocale = localStorageService.get("userDBversion") || "";
     var versionRemoteUnivers;
     var versionLocaleUnivers = localStorageService.get("universDBversion") || "";
+    var clientId = localStorageService.get("clientId") || "";
     var nbdl = 0;
 
     //Pour prévisu
@@ -304,11 +305,17 @@ angular.module('FMPQuizz.check.controller', [])
     } else {
         $scope.logs.push('cordova-plugin-wkwebview-engine : KO');
     }
-
-    $timeout(function() {
-        getUsers();
-        getUnivers();
-        initExamens();
-    }, 300);
+    //La tablette n'est pas initialisée
+    if (clientId===""){
+        //$timeout(function() {
+            $state.go('login');
+        //}, 1000);
+    } else {
+        $timeout(function() {
+            getUsers();
+            getUnivers();
+            initExamens();
+        }, 300);
+    }
 
 });

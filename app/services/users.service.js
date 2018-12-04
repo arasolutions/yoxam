@@ -82,6 +82,10 @@ function usersService(sha1, $q, Loki, $http, FMP, localStorageService) {
         return false;
     };
 
+    function loginClient(login, password, deferred) {
+        return $http.get('json/loginClient.json');
+    };
+
     function getCurrentUser() {
         return _currentUser;
     };
@@ -119,6 +123,7 @@ function usersService(sha1, $q, Loki, $http, FMP, localStorageService) {
         getCurrentUser: getCurrentUser,
         resetCurrentUser: resetCurrentUser,
         login: login,
+        loginClient: loginClient,
         getUsers: getUsers,
         replaceAllUsers: replaceAllUsers,
         getMediaList: getMediaList,
