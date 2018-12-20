@@ -1,4 +1,18 @@
 {
-	"name":"GOP",
-	"logo":"media/candidats/MAGOMADOVA_570_1464077064639.jpg"
+  "logo": "cache/media/candidats/afrand_401_1463664934741_300_300_crop_16777215.jpg",
+  "name": "GOP",
+  "siteList": [
+    {
+      "id": 10,
+      "name": "GOP Bdx"
+    },
+    {
+      "id": 11,
+      "name": "GOP Paris"
+    },
+    {
+      "id": 12,
+      "name": "GOP Bahamas"
+    }
+  ]
 }

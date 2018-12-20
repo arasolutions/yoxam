@@ -2,10 +2,20 @@ angular.module('FMPQuizz.login.controller', ['angular-sha1'])
 
 .controller('loginCtrl', function($scope, $ionicLoading, FMP, $ionicPopup, usersService, examensService, $timeout, universService, $state, localStorageService, $q) {
     var currentUser;
-    var clientId = localStorageService.get("clientId") || "";
+    $scope.clientId = localStorageService.get("clientId") || "";
+    $scope.siteId = localStorageService.get("siteId") || "";
+
+    if (ionic.Platform.isWebView()) {
+        $scope.mediaPath = (cordova.file.documentsDirectory).replace('file://', '');
+    } else {
+        $scope.mediaPath = FMP.REMOTE_SERVER_MEDIA;
+    }
+
     $ionicLoading.hide();
     usersService.resetCurrentUser();
     examensService.resetCurrentExamen();
+    $scope.site_img = localStorageService.get("site_img")||"media/sites/17d1712b1bf847e7cfe7bfae93ac460ee6868b43.image";
+
     if (typeof navigator.splashscreen !== "undefined") {
         setTimeout(function() {
             navigator.splashscreen.hide();
@@ -13,7 +23,7 @@ angular.module('FMPQuizz.login.controller', ['angular-sha1'])
     }
     $scope.versionApp = FMP.VERSION_APP;
     $scope.form = {};
-    if (clientId !== "") {
+    if ($scope.clientId !== "" && $scope.siteId !== "") {
         var tabToBO = localStorageService.get("tabToBO") || false;
         if (!tabToBO) {
             alertPopup = $ionicPopup.alert({
@@ -52,13 +62,18 @@ angular.module('FMPQuizz.login.controller', ['angular-sha1'])
             template: 'Identifiant ou mot de passe invalide.',
             okType: 'button-assertive'
         };
-        if (clientId === "") {
+        if ($scope.clientId === "") {
             if ($scope.form.login) {
                 var deferred = $q.defer();
                 usersService.loginClient($scope.form.login, $scope.form.password, deferred)
                     .then(function(server) {
                         console.log(server);
                         $scope.clientId=server.data.name;
+                        localStorageService.set("clientId",$scope.clientId);
+                        localStorageService.set("siteList",server.data.siteList); 
+                        localStorageService.set("site_img",server.data.logo);                     
+                        $state.go('admin');
+                        return;
                     }, function(reject) {
   
                     });
@@ -108,6 +123,35 @@ angular.module('FMPQuizz.login.controller', ['angular-sha1'])
             } else {
                 $ionicPopup.alert(alertContent);
             }
+        }
+    };
+
+    $scope.resetLS = function() {
+        localStorageService.remove('userDBversion');
+        localStorageService.remove('users.json');
+        localStorageService.remove('universDBversion');
+        localStorageService.remove('univers.json');
+        localStorageService.remove('examen.json');
+        localStorageService.remove("slidesTut");
+        localStorageService.remove("listeSituation");
+        localStorageService.remove("listeClasse");
+        localStorageService.remove("listeFormation");
+        localStorageService.remove("site_img");
+        localStorageService.remove("clientId");
+        localStorageService.remove("siteId");
+        localStorageService.remove("tabToBO");
+        localStorageService.remove("siteList");
+        if (ionic.Platform.isWebView()) {
+            $cordovaFile.removeFile(cordova.file.dataDirectory, 'loki__lsFMP.univers.json')
+                .then(function(success) {
+                    $timeout(function() { window.location.reload(true); }, 1000);
+                }, function(error) {});
+            $cordovaFile.removeFile(cordova.file.dataDirectory, 'loki__lsFMP.users.json')
+                .then(function(success) {}, function(error) {});
+            $cordovaFile.removeFile(cordova.file.dataDirectory, 'loki__lsFMP.examen.json')
+                .then(function(success) {}, function(error) {});
+        } else {
+            window.location.reload(true);
         }
     };
 

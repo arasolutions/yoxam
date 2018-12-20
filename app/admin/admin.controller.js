@@ -2,12 +2,20 @@ angular.module('FMPQuizz.admin.controller', [])
 
 .controller('adminCtrl', function($scope, FMP, $http, $ionicPopup, usersService, universService, examensService, localStorageService, $state, $ionicPlatform, $timeout, $q, $ionicLoading, $cordovaFileTransfer, $cordovaFile) {
 
-    var examensUncommitted = examensService.getExamensUncommitted() || [];
-    var examensCommitted = examensService.getExamensCommitted() || [];
+    var siteId = localStorageService.get("siteId") || "";
+    var defaultVal = [{ 'id': 0, 'name': '' }];
+    $scope.siteList = defaultVal.concat(localStorageService.get("siteList") || []);
+
+    console.log($scope.siteList);
+    if (siteId!==""){
+        var examensUncommitted = examensService.getExamensUncommitted() || [];
+        var examensCommitted = examensService.getExamensCommitted() || [];
+
+        $scope.examens = examensUncommitted.concat(examensCommitted);
+    }
+
     $scope.logs = [];
     $scope.data = {};
-
-    $scope.examens = examensUncommitted.concat(examensCommitted);
 
     $scope.synch = function(examen) {
         $ionicLoading.show({
@@ -52,13 +60,13 @@ angular.module('FMPQuizz.admin.controller', [])
 
     $scope.setName = function() {
         $scope.data.configPane = false;
-        var uuid = FMP.UDID + $scope.data.siteId;
+        var uuid = FMP.UDID + $scope.data.siteId.id;
         if (ionic.Platform.isWebView()) {
             uuid = window.device.uuid;
         }
         localStorageService.set("tabToBO", true);
-        localStorageService.set("siteId", $scope.data.siteId);
-        var url = FMP.REMOTE_SERVER + "/api/updatetab/udid/" + uuid + "/label/" + $scope.data.label + "/siteid/" + $scope.data.siteId + "?callback=JSON_CALLBACK";
+        localStorageService.set("siteId", $scope.data.siteId.id);
+        var url = FMP.REMOTE_SERVER + "/api/updatetab/udid/" + uuid + "/label/" + $scope.data.label + "/siteid/" + $scope.data.siteId.id + "?callback=JSON_CALLBACK";
         $http({
             method: 'JSONP',
             url: url
@@ -215,6 +223,7 @@ angular.module('FMPQuizz.admin.controller', [])
         localStorageService.remove("listeClasse");
         localStorageService.remove("listeFormation");
         localStorageService.remove("site_img");
+        localStorageService.remove("siteList");
         if (ionic.Platform.isWebView()) {
             $cordovaFile.removeFile(cordova.file.dataDirectory, 'loki__lsFMP.univers.json')
                 .then(function(success) {

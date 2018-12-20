@@ -107,7 +107,11 @@ function usersService(sha1, $q, Loki, $http, FMP, localStorageService) {
     };
 
     function getNbUsers(){
-        return (_users.find({'can_admin' : { '$ne' : 1 }})).length;
+        if (_users){
+            return (_users.find({'can_admin' : { '$ne' : 1 }})).length;
+        } else {
+            return 0;
+        }
     };
 
     function sendEmail(){

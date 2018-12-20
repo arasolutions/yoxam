@@ -3,7 +3,7 @@
         <div class="bodyLogin"></div>
         <!-- <div class="grad"></div> -->
         <div class="headerLogin">
-            <img src="img/logo/logo_big-white-min.png" width="200">
+            <img ng-src="{{mediaPath+site_img}}" width="200">
         </div>
         <br>
         <div class="login">
@@ -13,9 +13,9 @@
             <br>
             <a style="margin:0px;height:35px" class="button button-block button-small button-positive" ng-click="login()">Login</a>
         </div>
-        <div class="logoLogin">
-            <img src="img/logo/logo_fmp_trans.png" height="160">
+        <div class="logoLogin" ng-click="resetLS()">
+            <img src="img/logo/icon_ini.png" height="160">
         </div>
-        <div class="version light txtright">Version : {{versionApp}} | {{clientId}}<br/>V.Univers : {{versionUni}}<br/>V.Candidats : {{versionUser}}</div>
+        <div class="version light txtright">Version : {{versionApp}} | {{clientId}} | {{siteId}} <br/>V.Univers : {{versionUni}}<br/>V.Candidats : {{versionUser}}</div>
     </ion-content>
 </ion-view>

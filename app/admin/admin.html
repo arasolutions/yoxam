@@ -36,11 +36,9 @@
                 <div class="input-label">
                     Site
                 </div>
-                <select ng-model="data.siteId">
-                    <option value="1">Midi Atlantique</option>
-                    <option value="2">Ile de France</option>
-                    <option value="3">Méditérranée</option>
+                <select ng-model="data.siteId" ng-options="site.name for site in siteList track by site.id">
                 </select>
+
             </label>
             <label class="item item-input">
                 <input type="text" placeholder="Label" ng-model="data.label">

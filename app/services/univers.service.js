@@ -149,13 +149,15 @@ function universService($q, Loki, $http, FMP, localStorageService) {
 
     function getNbIndice() {
         var nb = 0;
-        for (var i = 0; i < _univers.data.length; i++) {
-            if (_univers.data[i].questionnaires) {
-                for (var j = 0; j < _univers.data[i].questionnaires.length; j++) {
-                    for (var k = 0; k < _univers.data[i].questionnaires[j].slides.length; k++) {
-                        if (_univers.data[i].questionnaires[j].slides[k].blocs) {
-                            for (var l = 0; l < _univers.data[i].questionnaires[j].slides[k].blocs.length; l++) {
-                                nb += _univers.data[i].questionnaires[j].slides[k].blocs[l].questions.length;
+        if (_univers){
+            for (var i = 0; i < _univers.data.length; i++) {
+                if (_univers.data[i].questionnaires) {
+                    for (var j = 0; j < _univers.data[i].questionnaires.length; j++) {
+                        for (var k = 0; k < _univers.data[i].questionnaires[j].slides.length; k++) {
+                            if (_univers.data[i].questionnaires[j].slides[k].blocs) {
+                                for (var l = 0; l < _univers.data[i].questionnaires[j].slides[k].blocs.length; l++) {
+                                    nb += _univers.data[i].questionnaires[j].slides[k].blocs[l].questions.length;
+                                }
                             }
                         }
                     }

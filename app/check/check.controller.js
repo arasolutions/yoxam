@@ -8,13 +8,17 @@ angular.module('FMPQuizz.check.controller', [])
     var versionRemoteUnivers;
     var versionLocaleUnivers = localStorageService.get("universDBversion") || "";
     var clientId = localStorageService.get("clientId") || "";
+    var siteId = localStorageService.get("siteId") || "";
     var nbdl = 0;
+    $scope.logs.push('clientId : ' + clientId);
+    $scope.logs.push('siteId : ' + siteId);
 
     //Pour prévisu
     if (!ionic.Platform.isWebView()) {
-        var siteId = $stateParams.siteId || 1;
-        localStorageService.set("siteId", siteId);
-        localStorageService.set("tabToBO", true);
+        if ($stateParams.siteId){
+            localStorageService.set("siteId", $stateParams.siteId);
+            localStorageService.set("tabToBO", true);
+        }
     }
 
     $scope.showWaiting = function() {
@@ -282,6 +286,9 @@ angular.module('FMPQuizz.check.controller', [])
         localStorageService.remove("listeClasse");
         localStorageService.remove("listeFormation");
         localStorageService.remove("site_img");
+        localStorageService.remove("clientId");
+        localStorageService.remove("siteId");
+        localStorageService.remove("tabToBO");
         if (ionic.Platform.isWebView()) {
             $cordovaFile.removeFile(cordova.file.dataDirectory, 'loki__lsFMP.univers.json')
                 .then(function(success) {
@@ -306,7 +313,7 @@ angular.module('FMPQuizz.check.controller', [])
         $scope.logs.push('cordova-plugin-wkwebview-engine : KO');
     }
     //La tablette n'est pas initialisée
-    if (clientId===""){
+    if (clientId==="" || siteId===""){
         //$timeout(function() {
             $state.go('login');
         //}, 1000);
