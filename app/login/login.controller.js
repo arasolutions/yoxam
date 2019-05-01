@@ -7,7 +7,7 @@ angular.module('FMPQuizz.login.controller', ['angular-sha1'])
 
     if (ionic.Platform.isWebView()) {
         $scope.mediaPath = (cordova.file.documentsDirectory).replace('file://', '');
-        if (clientId===""){
+        if ($scope.clientId===""){
             $scope.mediaPath="";
         }
     } else {
