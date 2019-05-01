@@ -14,7 +14,7 @@ angular.module('FMPQuizz.login.controller', ['angular-sha1'])
     $ionicLoading.hide();
     usersService.resetCurrentUser();
     examensService.resetCurrentExamen();
-    $scope.site_img = localStorageService.get("site_img")||"media/sites/17d1712b1bf847e7cfe7bfae93ac460ee6868b43.image";
+    $scope.site_img = localStorageService.get("site_img")||"media/logo-default.png";
 
     if (typeof navigator.splashscreen !== "undefined") {
         setTimeout(function() {

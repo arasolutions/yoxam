@@ -1,18 +1,18 @@
 {
-  "logo": "cache/media/candidats/afrand_401_1463664934741_300_300_crop_16777215.jpg",
-  "name": "GOP",
+  "logo": "media/logo_scalian-1.png",
+  "name": "Scalian",
   "siteList": [
     {
-      "id": 10,
-      "name": "GOP Bdx"
+      "id": 1,
+      "name": "Scalian Bdx"
     },
     {
-      "id": 11,
-      "name": "GOP Paris"
+      "id": 4,
+      "name": "Scalian Paris"
     },
     {
       "id": 12,
-      "name": "GOP Bahamas"
+      "name": "Scalian Bahamas"
     }
   ]
 }

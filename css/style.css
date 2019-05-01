@@ -70,7 +70,7 @@ p {
     position: absolute;
     width: 1024px;
     height: 768px;
-    background-image: url(../img/fond/fond_login.jpg);
+    background-image: url(../img/fond/trianglify.png);
     background-size: cover;
     /*-webkit-filter: blur(5px);*/
     z-index: -100;
@@ -109,6 +109,11 @@ p {
     width: 271px;
     padding: 10px;
     z-index: 2;
+}
+
+.login input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgba(255, 255, 255, 0.6);
+  opacity: 1; /* Firefox */
 }
 
 .logoLogin{
