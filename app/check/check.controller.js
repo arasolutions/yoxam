@@ -244,6 +244,7 @@ angular.module('FMPQuizz.check.controller', [])
                                         mediaList[server.data.slidesTut[j].sld_bgimg] = server.data.slidesTut[j].sld_bgimg;
                                     }
                                 }
+                                mediaList["media/logo-default.png"]="media/logo-default.png";
                                 download(3, mediaList);
                                 localStorageService.set("universDBversion", versionRemoteUnivers);
                                 localStorageService.set("site_img", server.data.site_img);
