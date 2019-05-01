@@ -15,7 +15,7 @@ angular.module('FMPQuizz.tuto.controller', [])
     if (ionic.Platform.isWebView()) {
         $scope.mediaPath = (cordova.file.documentsDirectory).replace('file://', '');
     } else {
-        $scope.mediaPath = "http://www.backoffice-challenge.com/";
+        $scope.mediaPath = "http://r7.bo.yoxam.com/";
     }
     $scope.slidesTut = localStorageService.get("slidesTut");
     $scope.setCurrentSlide = function($index, verif) {

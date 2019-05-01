@@ -10,22 +10,22 @@
         <button class="button button-small button-balanced" ng-click="data.configPane=!data.configPane">
             Config ID
         </button>
-        <button class="button button-small button-assertive" ng-click="forceSyncCan()">
+        <button class="button button-small button-positive" ng-click="forceSyncCan()">
             Forcer sync Candidats
         </button>
-        <button class="button button-small button-assertive" ng-click="forceSyncUni()">
+        <button class="button button-small button-positive" ng-click="forceSyncUni()">
             Forcer synchro Univers
         </button>
         <button class="button button-small button-dark" ng-click="clearLogs()">
             Clear logs
         </button>
-        <button class="button button-small button-assertive" ng-click="resetLS()">
+        <button class="button button-small button-royal" ng-click="resetLS()">
             <i class="ion-alert-circled pr5"></i>Reset LS
         </button>
-        <button class="button button-small button-assertive" ng-click="resetTestAccount()">
+        <button class="button button-small button-royal" ng-click="resetTestAccount()">
             <i class="ion-alert-circled pr5"></i>Reset Comptes Test
         </button>
-        <button class="button button-small button-assertive" ng-click="sendEmail()">
+        <button class="button button-small button-royal" ng-click="sendEmail()">
             <i class="ion-email pr5"></i>Help
         </button>
         <div class="padding">
@@ -51,7 +51,7 @@
             <div class="item item-divider item-dark light txtcenter">
                 Liste des examens présents sur cette tablette
             </div>
-            <ion-item ng-repeat="examen in examens track by $index" class="item-button-right" ng-class="examen.commit?'item-stable':'item-energized'">
+            <ion-item ng-repeat="examen in examens track by $index" class="item-button-right" ng-class="examen.commit?'item-stable':'item-balanced'">
                 <h2>{{examen.can_id}} | {{examen.can_login}} | {{examen.can_nom}} <i ng-if="!examen.finished" class="ion-alert-circled assertive pl30"> Examen non terminé</i></h2>
                 <button ng-if="!examen.commit && !examen.can_test" class="button button-assertive" ng-click="synch(examen)">
                     <i class="ion-paper-airplane pr5"></i> Synchroniser

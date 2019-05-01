@@ -63,13 +63,13 @@
             </ion-slide-page>
         </ion-slides>
         <div style="width:100%;position: absolute;bottom: 10px;z-index:10;text-align:center">
-            <a style="text-decoration:none !important;margin:0px 5px 0px 5px;border-radius: 50% !important;color:blue" ng-repeat="slide in data.slides" class="button" ng-click="slider.slideTo($index,0,false);setCurrentSlide($index,false)" ng-class="[{1: 'button-stable',2: 'button-energized',3: 'button-balanced'}[slide.sld_etat],{'pageSelected':myActiveIndex==$index}]"><b>{{::$index+1}}</b></a>
+            <a style="text-decoration:none !important;margin:0px 5px 0px 5px;border-radius: 50% !important;color:white" ng-repeat="slide in data.slides" class="button" ng-click="slider.slideTo($index,0,false);setCurrentSlide($index,false)" ng-class="[{1: 'button-stable',2: 'button-energized',3: 'button-balanced'}[slide.sld_etat],{'pageSelected':myActiveIndex==$index}]"><b>{{::$index+1}}</b></a>
         </div>
         <div class="progress-wrapper" style="z-index:11">
             <div class="progress light">
                 {{timer}}
             </div>
-            <div round-progress max="data.timeMax" current="timer" color="{{ (timer / data.timeMax < 0.2) ? '#C6107E' : '#80B42B' }}" bgcolor="#999" radius="100" stroke="20" semi="true" rounded="true" clockwise="true" responsive="true" duration="800" animation="easeInOutQuart" animation-delay="0"></div>
+            <div round-progress max="data.timeMax" current="timer" color="{{ (timer / data.timeMax < 0.2) ? '#FFCA2D' : '#267AB5' }}" bgcolor="#999" radius="100" stroke="20" semi="true" rounded="true" clockwise="true" responsive="true" duration="800" animation="easeInOutQuart" animation-delay="0"></div>
         </div>
     </ion-content>
 </ion-view>
